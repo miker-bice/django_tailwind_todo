@@ -13,13 +13,13 @@
   </div>
 
   <!-- this the list container -->
-  <div class="bg-slate-700 rounded-lg px-10 py-5 shadow-lg">
+  <div class="bg-slate-700 rounded-lg py-5 shadow-lg">
     <!-- lists container -->
     <div class="">
       <!-- list items go here | This is where you use the for loop -->
       {% for item in all_items %}
       <div
-        class="flex items-center justify-between py-2 text-gray-300 font-semibold"
+        class="flex items-center justify-between py-2 text-gray-300 font-semibold px-10 hover:bg-slate-600 transition delay-150"
       >
         <div>
           <input
@@ -33,7 +33,10 @@
           <label for="task" id="task-label" class="">{{ item.item }}</label>
         </div>
         <div>
-          <form action="{% url 'todoApp:delete-item' item.id %}" class="flex items-center">
+          <form
+            action="{% url 'todoApp:delete-item' item.id %}"
+            class="flex items-center"
+          >
             {% csrf_token %}
             <button type="submit">
               <svg
@@ -56,38 +59,42 @@
       </div>
       {% endfor %}
 
-     
-
       <!-- add task form container -->
-      <form action="{% url 'todoApp:add-item' %}" class="relative pt-3" method="post">
-        {% csrf_token %}
-        <input
-          class="w-full py-3 mb-4 inline-block rounded-lg bg-slate-600 focus:outline-0 font-semibold"
-          type="text"
-          name="taskInput"
-          id="taskInput"
-          placeholder="Your task here"
-          autocomplete="off"
-        />
-        <button
-          class="absolute w-full flex justify-center items-center bg-green-600 hover:bg-green-700 transition delay-100 px-5 py-2 rounded-full font-semibold shadow-md shadow-green-800"
-          type="submit"
+      <div class="px-10">
+        <form
+          action="{% url 'todoApp:add-item' %}"
+          class="relative pt-3"
+          method="post"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 mr-2"
-            viewBox="0 0 20 20"
-            fill="currentColor"
+          {% csrf_token %}
+          <input
+            class="w-full py-3 mb-4 inline-block rounded-lg bg-slate-600 focus:outline-0 font-semibold"
+            type="text"
+            name="taskInput"
+            id="taskInput"
+            placeholder="Your task here"
+            autocomplete="off"
+          />
+          <button
+            class="absolute w-full flex justify-center items-center bg-green-600 hover:bg-green-700 transition delay-100 px-5 py-2 rounded-full font-semibold shadow-md shadow-green-800"
+            type="submit"
           >
-            <path
-              fill-rule="evenodd"
-              d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          New Task
-        </button>
-      </form>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            New Task
+          </button>
+        </form>
+      </div>
       <!-- end div -->
     </div>
   </div>
