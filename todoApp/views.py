@@ -1,8 +1,16 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from .models import TodoList
+
 
 # Create your views here.
-
-
 def home(request):
-    return render(request, "todoApp/home.html", {})
+    all_todo_items = TodoList.objects.all()
+    return render(request, "todoApp/home.html", {'all_items': all_todo_items})
 
+
+def add_item(request):
+    item = request.POST['taskInput']
+    new_item = TodoList(item=item)
+    new_item.save()
+    return HttpResponseRedirect('/todo-app/')
