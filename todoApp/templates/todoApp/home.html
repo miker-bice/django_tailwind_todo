@@ -25,12 +25,12 @@
           <input
             class="mr-5 rounded-full bg-slate-700"
             type="checkbox"
-            id="taskCheck"
+            id="task-check"
             name="task"
             value=""
           />
           <!-- insert the context data here -->
-          <label for="task" class="">{{ item.item }}</label>
+          <label for="task" id="task-label" class="">{{ item.item }}</label>
         </div>
         <div>
           <form action="#" class="flex items-center">
@@ -62,7 +62,7 @@
       <form action="{% url 'todoApp:add-item' %}" class="relative pt-3" method="post">
         {% csrf_token %}
         <input
-          class="w-full py-3 mb-4 inline-block rounded-lg bg-slate-600 border-none focus:border-none outline-0 font-semibold"
+          class="w-full py-3 mb-4 inline-block rounded-lg bg-slate-600 focus:outline-0 font-semibold"
           type="text"
           name="taskInput"
           id="taskInput"
