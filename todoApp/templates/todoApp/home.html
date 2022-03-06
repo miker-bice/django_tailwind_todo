@@ -33,7 +33,7 @@
           <label for="task" id="task-label" class="">{{ item.item }}</label>
         </div>
         <div>
-          <form action="#" class="flex items-center">
+          <form action="{% url 'todoApp:delete-item' item.id %}" class="flex items-center">
             {% csrf_token %}
             <button type="submit">
               <svg
