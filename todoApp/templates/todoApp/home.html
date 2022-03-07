@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block title %}
-<title>Home</title>
+<title>Django - Tailwind Todo App</title>
 {% endblock title %} {% block home %}
 
 <div class="min-h-screen md:px-24 lg:px-44">
@@ -19,11 +19,12 @@
       <!-- list items go here | This is where you use the for loop -->
       {% for item in all_items %}
       <div
-        class="flex items-center justify-between py-2 text-gray-300 font-semibold px-10 hover:bg-slate-600 transition delay-150"
+        class="flex items-center justify-between py-2 text-gray-300 font-semibold px-10 transition delay-150"
+        id="list-item-container"
       >
         <div>
           <input
-            class="mr-5 rounded-full bg-slate-700"
+            class="mr-5 rounded-full bg-slate-700 task-check"
             type="checkbox"
             id="task-check"
             name="task"
@@ -74,6 +75,7 @@
             id="taskInput"
             placeholder="Your task here"
             autocomplete="off"
+            required
           />
           <button
             class="absolute w-full flex justify-center items-center bg-green-600 hover:bg-green-700 transition delay-100 px-5 py-2 rounded-full font-semibold shadow-md shadow-green-800"
