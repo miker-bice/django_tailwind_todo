@@ -6,7 +6,7 @@ from .models import TodoList
 # Create your views here.
 def home(request):
     all_todo_items = TodoList.objects.all()
-    return render(request, "todoApp/home.html", {'all_items': all_todo_items})
+    return render(request, 'todoApp/home.html', {'all_items': all_todo_items})
 
 
 def add_item(request):
@@ -20,3 +20,11 @@ def delete_item(request, item_id):
     item = TodoList.objects.get(pk=item_id)
     item.delete()
     return HttpResponseRedirect('/todo-app/')
+
+
+def task_view(request, item_id):
+    item = TodoList.objects.get(pk=item_id)
+    context = {
+        'item': item
+    }
+    return render(request, 'todoApp/task.html', context)
