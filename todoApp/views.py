@@ -24,7 +24,4 @@ def delete_item(request, item_id):
 
 def task_view(request, item_id):
     item = TodoList.objects.get(pk=item_id)
-    context = {
-        'item': item
-    }
-    return render(request, 'todoApp/task.html', context)
+    return render(request, 'todoApp/task.html', {'item': item})

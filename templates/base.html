@@ -10,7 +10,11 @@
   </head>
 
   <body class="bg-slate-800 leading-normal tracking-normal text-gray-200">
-    <div class="px-10 py-16">{% block content %}{% endblock content %}</div>
+    <div class="px-10 py-16">
+      <div class="min-h-screen md:px-24 lg:px-44">
+      {% block content %}{% endblock content %}
+      </div>
+    </div>
 
     <footer class="bg-slate-700 px-10 py-5">
       <h4>Made by Mike Jerrson Galindez</h4>

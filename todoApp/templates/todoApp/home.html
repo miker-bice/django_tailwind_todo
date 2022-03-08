@@ -31,7 +31,7 @@
             value=""
           /> -->
           <!-- insert the context data here -->
-          <h3 id="task-label" class="">{{ item.item }}</h3>
+          <a href="{% url 'todoApp:task-view' item.id %}">{{ item.item }}</a>
         </div>
         <div>
           <form

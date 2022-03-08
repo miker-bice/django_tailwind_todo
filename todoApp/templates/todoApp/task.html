@@ -3,5 +3,10 @@
     <title>Todo</title>
 {% endblock title %}
 {% block content %}
-    <h2>This is the task page</h2>
+   <div class="bg-slate-700 rounded-lg shadow-lg text-gray-300 py-5">
+        <h2>{{ item.user_id }}</h2>
+        <p>{{ item.description }}</p>
+   </div>
+    
+    
 {% endblock content %}
