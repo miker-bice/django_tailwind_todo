@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %}
 <title>Django - Tailwind Todo App</title>
-{% endblock title %} {% block home %}
+{% endblock title %} {% block content %}
 
 <div class="min-h-screen md:px-24 lg:px-44">
   <!-- this is the card head -->
@@ -8,7 +8,7 @@
     class="px-5 py-4 shadow-md bg-gradient-to-r from-cyan-600 to-green-600 mb-5"
   >
     <div>
-      <h1 class="font-bold text-xl uppercase">Django - Tailwind Todo App</h1>
+      <h1 class="font-bold text-xl uppercase">{% now "jS F Y" %}</h1>
     </div>
   </div>
 
@@ -101,4 +101,4 @@
     </div>
   </div>
 </div>
-{% endblock home %}
+{% endblock content %}
