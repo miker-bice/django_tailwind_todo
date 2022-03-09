@@ -20,18 +20,19 @@
       <!-- list items go here | This is where you use the for loop -->
       {% for item in all_items %}
       <div
-        class="flex items-center justify-between py-2 text-gray-300 font-semibold px-10 transition delay-150"
+        class="flex items-center justify-between py-2 text-gray-300 font-semibold px-10 transition delay-150 hover:bg-slate-600"
       >
-        <div>
-          <!-- <input
-            class="mr-5 rounded-full bg-slate-700 task-check"
-            type="checkbox"
-            id="task-check"
-            name="task"
-            value=""
-          /> -->
+        <div class="flex items-center">
+
           <!-- insert the context data here -->
-          <a href="{% url 'todoApp:task-view' item.id %}">{{ item.item }}</a>
+            {% if item.complete %}
+                <div class="h-4 w-4 mr-3 rounded-full bg-green-600 outline-gray-400"></div>
+                <a href="{% url 'todoApp:task-view' item.id %}" class="line-through">{{ item.item }}</a>
+                {% else %}
+                <div class="h-4 w-4 mr-3 rounded-full bg-slate-500"></div>
+                <a href="{% url 'todoApp:task-view' item.id %}">{{ item.item }}</a>
+            {% endif %}
+        
         </div>
         <div>
           <form
@@ -78,7 +79,7 @@
             required
           />
           <button
-            class="absolute w-full flex justify-center items-center bg-green-600 hover:bg-green-500 transition delay-100 px-5 py-2 rounded-full font-semibold shadow-md shadow-green-800"
+            class="absolute w-full flex justify-center items-center bg-green-600 hover:bg-green-500 transition delay-100 px-5 py-2 rounded-full font-semibold shadow-green-800 shadow-md hover:shadow-lg hover:shadow-green-800"
             type="submit"
           >
             <svg
