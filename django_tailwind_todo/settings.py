@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'todoApp.apps.TodoappConfig',
+    'loginApp.apps.LoginappConfig',
 ]
 
 # This is tailwind app name
