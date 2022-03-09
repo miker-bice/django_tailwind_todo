@@ -3,10 +3,20 @@
     <title>Todo</title>
 {% endblock title %}
 {% block content %}
-   <div class="bg-slate-700 rounded-lg shadow-lg text-gray-300 py-5">
-        <h2>{{ item.user_id }}</h2>
-        <p>{{ item.description }}</p>
+   <div class="bg-slate-700 rounded-lg shadow-lg text-gray-300 py-10 px-10">
+        <div>
+            <a href="{% url 'todoApp:home' %}" class="">
+                <svg class="w-6 h-6 mb-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </a>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" value="UPDATE">
+
+        </form>
+
    </div>
     
-    
+
 {% endblock content %}
