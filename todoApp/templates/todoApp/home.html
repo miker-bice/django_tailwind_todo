@@ -8,7 +8,7 @@
     class="px-10 py-4 shadow-md bg-gradient-to-r from-cyan-600 to-green-600 mb-5"
   >
     <div>
-      <h1 class="font-bold text-xl">Hello User!</h1>
+      <h1 class="font-bold text-xl">Hello User</h1>
       <h2 class="font-semibold text-md">{% now "jS F Y" %}</h2>
     </div>
   </div>
@@ -32,7 +32,7 @@
                 <div class="h-4 w-4 mr-3 rounded-full bg-slate-500"></div>
                 <a href="{% url 'todoApp:task-view' item.id %}">{{ item.item }}</a>
             {% endif %}
-        
+
         </div>
         <div>
           <form
