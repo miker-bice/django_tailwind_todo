@@ -4,10 +4,10 @@
 {% endblock title %}
 {% block content %}
     <div class="bg-slate-700 rounded-lg shadow-lg text-gray-300 py-10 px-8">
-    <form action="{% url 'loginApp:register' %}" method="POST">
+    <form action="{% url 'loginApp:register' %}" method="POST" class="register-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Register" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <input type="submit" value="Register" class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
     </form>
     </div>
 {% endblock content %}
