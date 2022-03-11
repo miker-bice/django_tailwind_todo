@@ -19,20 +19,20 @@ input#id_password2{
 
 /*this targets the helptext span items*/
 .helptext{
-    @apply text-xs;
+    @apply text-xs font-normal;
 }
 
-/*this targets the labels in the register form*/
+/*this targets the paragraphs in the register form*/
 .register-form > p{
     @apply mb-4;
 }
-.register-form > label{
-    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+.register-form , label{
+    @apply block mb-2 text-sm font-medium text-red-400 dark:text-gray-300;
 }
 
 /*this targets the li items in the errorlist*/
 .register-form > .errorlist > li {
-    @apply text-red-500
+    @apply text-red-500 font-semibold;
 }
 
 

@@ -44,5 +44,3 @@ class UserRegistrationForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise ValidationError("Email already exists")
         return self.cleaned_data
-
-# natapos ka sa paghahanap ng paraan kung paano i style yung forms
