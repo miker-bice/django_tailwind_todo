@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ValidationError
 from django import forms
 
 
@@ -37,5 +38,11 @@ class UserRegistrationForm(UserCreationForm):
                          "dark:text-white dark:focus:ring-blue-500 "
                          "dark:focus:border-blue-500"})
         }
+
+    def clean(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("Email already exists")
+        return self.cleaned_data
 
 # natapos ka sa paghahanap ng paraan kung paano i style yung forms
