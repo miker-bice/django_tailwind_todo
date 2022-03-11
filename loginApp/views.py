@@ -7,16 +7,14 @@ from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 def user_login(request):
-
     if request.user.is_authenticated:
         return redirect('todoApp:home')
 
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+        form = AuthenticationForm(data=request.POST)
 
-        if user is not None:
+        if form.is_valid():
+            user = form.get_user()
             login(request, user)
             return redirect('todoApp:home')
         else:
@@ -27,8 +25,30 @@ def user_login(request):
         form = AuthenticationForm()
         return render(request, 'loginApp/login.html', {'form': form})
 
+    # if request.user.is_authenticated:
+    #     return redirect('todoApp:home')
+    #
+    # if request.method == 'POST':
+    #     username = request.POST['username']
+    #     password = request.POST['password']
+    #     user = authenticate(request, username=username, password=password)
+    #
+    #     if user is not None:
+    #         login(request, user)
+    #         return redirect('todoApp:home')
+    #     else:
+    #         form = AuthenticationForm()
+    #         return render(request, 'loginApp/login.html', {'form': form})
+    #
+    # else:
+    #     form = AuthenticationForm()
+    #     return render(request, 'loginApp/login.html', {'form': form})
+
 
 def user_register(request):
+    if request.user.is_authenticated:
+        return redirect('todoApp:home')
+
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():

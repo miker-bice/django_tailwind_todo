@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
+from django.contrib.auth import logout, authenticate
 from django.contrib import messages
 from .models import TodoList
 from .forms import TodoForm
@@ -47,3 +48,9 @@ def task_view(request, item_id):
     #     return HttpResponseRedirect('/todo-app/')
 
     return render(request, 'todoApp/task.html', {'form': form})
+
+
+# this handles user logout
+def user_logout(request):
+    logout(request)
+    return redirect('loginApp:login')
