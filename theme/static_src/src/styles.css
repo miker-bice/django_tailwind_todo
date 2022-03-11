@@ -30,6 +30,11 @@ input#id_password2{
     @apply block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300;
 }
 
+/*this targets the li items in the errorlist*/
+.register-form > .errorlist > li {
+    @apply text-red-500
+}
+
 
 
 
