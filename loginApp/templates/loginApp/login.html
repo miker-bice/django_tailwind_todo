@@ -3,10 +3,10 @@
 {% endblock title %} {% block content %}
 <div class="bg-slate-700 rounded-lg shadow-lg text-gray-300 py-10 px-8">
 {% if messages %}
-    <div>
+    <div class="mb-4">
         {% for message in messages %}
-            <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-            <span class="font-medium">{{ message }}
+            <div class="p-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                <span class="font-medium">{{ message.success }}</span>
             </div>
         {% endfor %}
     </div>
