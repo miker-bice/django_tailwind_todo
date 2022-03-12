@@ -2,17 +2,29 @@
 <title>Login</title>
 {% endblock title %} {% block content %}
 <div class="bg-slate-700 rounded-lg shadow-lg text-gray-300 py-10 px-8">
-  <form action="{% url 'loginApp:login' %}" method="POST">
+{% if messages %}
+    <div>
+        {% for message in messages %}
+            <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+            <span class="font-medium">{{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+  <form action="{% url 'loginApp:login' %}" method="POST" class="login-form">
       {% csrf_token %}
     <div>
         {{ form.as_p }}
     </div>
     <button
       type="submit"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      class="text-white mt-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
       Submit
     </button>
   </form>
+ <h2
+          class="text-sm text-gray-900 mt-4 dark:text-gray-300"
+          >Don't have an account yet? <a href="{% url 'loginApp:register' %}" class="text-blue-600 hover:underline dark:text-blue-500">Register</a></h2>
 </div>
 {% endblock content %}

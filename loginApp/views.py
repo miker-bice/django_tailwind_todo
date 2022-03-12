@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 
 
@@ -19,6 +19,7 @@ def user_login(request):
             return redirect('todoApp:home')
         else:
             form = AuthenticationForm()
+            messages.error(request, f"Invalid Username or Password")
             return render(request, 'loginApp/login.html', {'form': form})
 
     else:
