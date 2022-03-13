@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout, authenticate
+from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import TodoList
 from .forms import TodoForm
@@ -15,10 +16,12 @@ def home(request):
 # this view handles adding items to the database
 def add_item(request):
     item = request.POST['taskInput']
-    new_item = TodoList(item=item)
+    target_id = request.POST['targetId']
+    user = User.objects.only('id').get(id=target_id)
+    new_item = TodoList(user_id=user, item=item)
     new_item.save()
     return HttpResponseRedirect('/todo-app/')
-
+#  natapos ka sa paghahanap ng save method para sa current logged in user
 
 # this view handles item deletion
 def delete_item(request, item_id):
