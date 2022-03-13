@@ -9,8 +9,11 @@ from .forms import TodoForm
 
 # this view handles rendering the home page
 def home(request):
-    all_todo_items = TodoList.objects.filter(user_id=request.user.id)
-    return render(request, 'todoApp/home.html', {'all_items': all_todo_items})
+    if request.user.is_authenticated:
+        all_todo_items = TodoList.objects.filter(user_id=request.user.id)
+        return render(request, 'todoApp/home.html', {'all_items': all_todo_items})
+    else:
+        return redirect('loginApp:login')
 
 
 # this view handles adding items to the database
@@ -33,25 +36,29 @@ def delete_item(request, item_id):
 
 # this view handles the view of specific tasks as well as the update
 def task_view(request, item_id):
-    item = get_object_or_404(TodoList, pk=item_id)
-    form = TodoForm(request.POST or None, instance=item)
+    if request.user.is_authenticated:
+        item = get_object_or_404(TodoList, pk=item_id)
+        form = TodoForm(request.POST or None, instance=item)
 
-    if form.is_valid():
-        form.save()
-        return redirect('todoApp:home')
+        if form.is_valid():
+            form.save()
+            return redirect('todoApp:home')
 
-    # if request.method == 'POST':
-    #     form = TodoForm(request.POST)
-    #
-    #     if form.is_valid():
-    #         todo_instance.save()
-    #         messages.success(request, "Todo successfully updated")
-    #     else:
-    #         messages.error(request, "There is an error updating the todo task")
-    #
-    #     return HttpResponseRedirect('/todo-app/')
+        # if request.method == 'POST':
+        #     form = TodoForm(request.POST)
+        #
+        #     if form.is_valid():
+        #         todo_instance.save()
+        #         messages.success(request, "Todo successfully updated")
+        #     else:
+        #         messages.error(request, "There is an error updating the todo task")
+        #
+        #     return HttpResponseRedirect('/todo-app/')
 
-    return render(request, 'todoApp/task.html', {'form': form})
+        return render(request, 'todoApp/task.html', {'form': form})
+
+    else:
+        return redirect('loginApp:login')
 
 
 # this handles user logout
