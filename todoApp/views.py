@@ -9,19 +9,20 @@ from .forms import TodoForm
 
 # this view handles rendering the home page
 def home(request):
-    all_todo_items = TodoList.objects.all()
+    all_todo_items = TodoList.objects.filter(user_id=request.user.id)
     return render(request, 'todoApp/home.html', {'all_items': all_todo_items})
 
 
 # this view handles adding items to the database
 def add_item(request):
     item = request.POST['taskInput']
-    target_id = request.POST['targetId']
-    user = User.objects.only('id').get(id=target_id)
+    # the code below only works if the template contains a hidden input with the current id of the logged in user
+    # target_id = request.POST['targetId']
+    user = User.objects.only('id').get(id=request.user.id)
     new_item = TodoList(user_id=user, item=item)
     new_item.save()
     return HttpResponseRedirect('/todo-app/')
-#  natapos ka sa paghahanap ng save method para sa current logged in user
+
 
 # this view handles item deletion
 def delete_item(request, item_id):
