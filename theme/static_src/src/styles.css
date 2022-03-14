@@ -27,7 +27,7 @@ input#id_password2{
     @apply mb-4;
 }
 .register-form , label{
-    @apply block mb-2 text-sm font-medium text-red-400 dark:text-gray-300;
+    @apply block mb-2 text-sm font-medium text-gray-500 dark:text-gray-300;
 }
 
 /*this targets the li items in the errorlist*/
