@@ -11,8 +11,10 @@ class TodoForm(ModelForm):
 
         widgets = {
             'item': forms.TextInput(attrs={
-                'class': "bg-slate-800 rounded-lg focus:ring-blue-400 px-4 w-full mb-4 "
-                         "block"}),
+                'class': "bg-gray-50 mb-4 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 "
+                         "focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 "
+                         "dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 "
+                         "dark:focus:border-blue-500"}),
             'description': forms.Textarea(attrs={
                 'class': "block mb-4 p-2.5 w-full text-md text-gray-900 bg-gray-50 "
                          "rounded-lg border border-gray-300 focus:ring-blue-500 "
