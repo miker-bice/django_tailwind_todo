@@ -32,6 +32,8 @@ This is the database structure of the App. It consists of two database models, t
 and the <strong>Todo List Model</strong>. The Todo list contains different fields one of them is the target_id
 field which has a <strong>One-to-Many relationship</strong> with the ID field in the <strong>User Model</strong>
 
+This database structure allows saving of todo tasks that are specific to the user who created the task
+
 ## Authors
 
 - [@miker-bice](https://www.github.com/miker-bice)
