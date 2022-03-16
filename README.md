@@ -34,7 +34,7 @@ field which has a <strong>One-to-Many relationship</strong> with the ID field in
 
 This database structure allows saving of todo tasks that are specific to the user who created the task
 
-**Database Structure**
+**Sitemap**
 ![sitemap](https://github.com/miker-bice/django_tailwind_todo/blob/main/readMe/django_tailwind_todo_sitemap.jpg)
 
 This is the sitemap of the web app. The whole projects contains two seperate apps, the <strong>Authentication App</strong>
