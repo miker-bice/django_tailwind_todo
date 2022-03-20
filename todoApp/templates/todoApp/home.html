@@ -23,6 +23,8 @@
       <!-- list items go here | This is where you use the for loop -->
       {% for item in all_items %}
         {% include 'todoApp/includes/item.html' %}
+      {% empty %}
+        {% include 'todoApp/includes/item-emty.html' %}
       {% endfor %}
 
       <!-- add task form container -->
