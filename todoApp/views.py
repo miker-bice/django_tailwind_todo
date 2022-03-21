@@ -65,3 +65,8 @@ def task_view(request, item_id):
 def user_logout(request):
     logout(request)
     return redirect('loginApp:login')
+
+
+# this is for the custom 404 error message
+def entry_not_found(request, exception):
+    return render(request, '404.html', status=404)

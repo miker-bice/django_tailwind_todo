@@ -21,3 +21,5 @@ urlpatterns = [
     path('todo-app/', include('todoApp.urls')),
     path('authentication/', include('loginApp.urls')),
 ]
+
+handler404 = 'todoApp.views.entry_not_found'
